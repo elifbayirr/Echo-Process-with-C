@@ -7,7 +7,7 @@
 #include <signal.h>
 #include <wait.h>
 
-/* Bir karakter string'i ters ceviren fonksiyon */
+
 void strrev(char *x, int begin, int end) {
    char c;
  
@@ -30,8 +30,7 @@ int main(void){
         int     first_p[2], p1_read;
         int     second_p[2], p2_read;
 
-	/* Ebeveny ils cocuk arasinda iki yonlu (bidirectional) iletisim */        
-	/* gerceklesecegi icin iki pipe yaratmamiz gerekiyor. */
+
         pipe(first_p);
         pipe(second_p);
         
@@ -42,10 +41,10 @@ int main(void){
     	    exit(1);
         }
 
-	/* Ebeveyn mi cocuk mu olduguna gore davranis sekilleniyor */
+	
         if(fork_id_c == 0)   /* Cocuk proses */
 	{
-	    /* Cocuk prosess birinci pipe'in write ucuna ve ikinci pipe2in read ucuna ihtiyac duymuyor */
+	    
 	    close (first_p[1]);
 	    close (second_p[0]);
  	    while (true)
@@ -62,7 +61,7 @@ int main(void){
         } 
 	else /* Ebeveyn prosess */
 	{
-	    /* Ebeveyn prosess birinci pipe'in read ucuna ve ikinci prosess'in write ucuna ihtiyac duymuyor */
+	   
 	    close (first_p[0]);
 	    close (second_p[1]);
 
